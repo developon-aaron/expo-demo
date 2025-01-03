@@ -8,6 +8,7 @@ import {
 import { Link } from "expo-router";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { useRouter } from "expo-router";
 
 //Schema
 
@@ -26,13 +27,15 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function Index() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>KMLA Online</Text>
       <Formik
-        initialValues={{ username: "", password: "" }}
+        initialValues={{ username: "developon", password: "12345678" }}
         onSubmit={(values) => {
           console.log("Form submitted:", values);
+          router.push("/(tabs)");
         }}
         validationSchema={validationSchema}
       >

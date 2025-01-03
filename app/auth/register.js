@@ -9,8 +9,6 @@ import { Link } from "expo-router";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-//Schema
-
 const validationSchema = Yup.object().shape({
   username: Yup.string()
     .required("Username is required")
@@ -32,9 +30,9 @@ const validationSchema = Yup.object().shape({
 const Register = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>KMLA Online</Text>
+      <Text style={styles.title}>Register</Text>
       <Formik
-        initialValues={{ username: "", password: "", confirmPassword: "" }}
+        initialValues={{ username: "", password: "", password: "" }}
         onSubmit={(values) => {
           console.log("Form submitted:", values);
         }}
@@ -49,7 +47,6 @@ const Register = () => {
           touched,
         }) => (
           <View style={styles.formContainer}>
-            {/* Username Input */}
             <TextInput
               style={styles.input}
               placeholder="Username"
@@ -60,7 +57,6 @@ const Register = () => {
             {touched.username && errors.username && (
               <Text style={styles.errorText}>{errors.username}</Text>
             )}
-            {/* Password Input */}
             <TextInput
               style={styles.input}
               placeholder="Password"
@@ -83,21 +79,12 @@ const Register = () => {
             {touched.confirmPassword && errors.confirmPassword && (
               <Text style={styles.errorText}>{errors.confirmPassword}</Text>
             )}
-            ,{/* Submit Button */}
             <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-              <Text style={styles.buttonText}>로그인</Text>
+              <Text style={styles.buttonText}>회원가입</Text>
             </TouchableOpacity>
           </View>
         )}
       </Formik>
-
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
-          <Link href="./auth/register" style={styles.buttonText}>
-            회원가입
-          </Link>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };
